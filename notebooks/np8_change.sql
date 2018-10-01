@@ -26,7 +26,7 @@ WITH
   month_1 AS (
   SELECT
     *,
-    cost/items AS cost_per_item
+    cost/quantity AS cost_per_quantity
   FROM
     vw__presentation_summary
   INNER JOIN
@@ -38,7 +38,7 @@ WITH
   month_2 AS (
   SELECT
     *,
-    cost/items AS cost_per_item
+    cost/quantity AS cost_per_quantity
   FROM
     vw__presentation_summary
   INNER JOIN
@@ -51,9 +51,13 @@ SELECT
   month_1.presentation_code,
   name,
   month_1.type,
-  month_2.cost_per_item - month_1.cost_per_item AS per_item_delta,
+  month_2.cost_per_quantity - month_1.cost_per_quantity AS per_quantity_delta,
   month_2.cost - month_1.cost AS delta,
-  month_2.cost
+  month_1.cost AS month_1_cost,
+  month_2.cost AS month_2_cost,
+  month_1.quantity AS month_1_quantity,
+  month_2.quantity AS month_2_quantity
+
 FROM
   month_1
 INNER JOIN

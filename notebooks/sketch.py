@@ -77,16 +77,17 @@ df3 = pd.read_sql_query(
 
 
 # Top NP8 / branded price changes
-df3.sort_values('delta', ascending=False).head(20)
+df4 = df3[df3.month_1_cost > 5000]
+df4.sort_values('per_quantity_delta', ascending=False).head()
 
 # The same, but just NP8 generics
-df3[df3.type == 'generic'].sort_values('delta', ascending=False).head()
+df4[df4.type == 'generic'].sort_values('per_quantity_delta', ascending=False).head()
 
 # I think following shows that branded switching is actually costing the MHS *more* money overall.
 
 # Total price increases related to each type
 pd.options.display.float_format = '£{:,.2f}'.format
-pd.DataFrame(df3.groupby('type')['delta', 'cost'].sum())
+pd.DataFrame(df3.groupby('type')['delta', 'per_quantity_delta', 'month_2_cost'].sum())
 
 # # Trends in generic prescribing
 
