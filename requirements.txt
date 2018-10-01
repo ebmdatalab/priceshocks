@@ -1,0 +1,9 @@
+jupyter
+google-api-python-client
+pandas
+pandas-gbq
+ipykernel
+psycopg2
+pytest
+jupytext
+matplotlib

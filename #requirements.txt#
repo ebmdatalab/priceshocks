@@ -1,0 +1,17 @@
+jupyter
+google-api-python-client
+pandas
+pandas-gbq
+ipykernel
+psycopg2
+pytest
+jupytext
+matplotlib
+
+
+127.0.0.1 prescribing@prescribing=# select * from dmd_tariffprice where vmpp_id = 1251111000001105 and date = '2018-07-01';
+┌────────┬────────────┬─────────────┬────────────┬────────────────────┬──────────────────┐
+│   id   │    date    │ price_pence │ product_id │ tariff_category_id │     vmpp_id      │
+├────────┼────────────┼─────────────┼────────────┼────────────────────┼──────────────────┤
+│ 688268 │ 2018-07-01 │         134 │  322236009 │                 11 │ 1251111000001105 │
+└────────┴────────────┴─────────────┴────────────┴────────────────────┴──────────────────┘
