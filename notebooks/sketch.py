@@ -47,16 +47,18 @@ df = pd.read_sql_query(
     
 # -
 
+# So I'd expect it to add  up to M: 128m, A: 42M, C: 190m
 df.groupby('tariff_category').sum()
 
 df.groupby('tariff_category').sum().plot.bar(
-    y='delta', 
-    logy=True,
-    title="Expected net price increases by DT Category in {}".format(TARIFF_MONTH))
+    y='cost', 
+    title="Spending by DT Category in {}".format(TARIFF_MONTH))
 
 # Largest price increases expected OUTSIDE category M
 df2 = df[df.tariff_category != "Part VIIIA Category M"]
 df2.head(10)
+
+df[df.name.str.contains("upren")]
 
 # # Actual cost changes relating to things outside the Drug Tariff
 #
@@ -75,7 +77,7 @@ df3 = pd.read_sql_query(
 
 
 # Top NP8 / branded price changes
-df3.sort_values('delta', ascending=False).head()
+df3.sort_values('delta', ascending=False).head(20)
 
 # The same, but just NP8 generics
 df3[df3.type == 'generic'].sort_values('delta', ascending=False).head()
