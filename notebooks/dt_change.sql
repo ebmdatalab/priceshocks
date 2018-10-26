@@ -2,6 +2,7 @@
 -- need to work out the most expensive per-quantity cost (on
 -- assumption that'll be used) and use that to work out the total cost
 -- change.
+-- comment to test PRs
 WITH month_1 AS (
 SELECT
   product_id,
